@@ -1,0 +1,20 @@
+doctrine:
+    orm:
+        auto_generate_proxy_classes: false
+        metadata_cache_driver:
+            type: pool
+            id: doctrine.system_cache_provider
+        query_cache_driver:
+            type: pool
+            id: doctrine.system_cache_provider
+        result_cache_driver:
+            type: pool
+            id: doctrine.result_cache_provider
+
+framework:
+    cache:
+        pools:
+            doctrine.result_cache_pool:
+                adapter: cache.app
+            doctrine.system_cache_pool:
+                adapter: cache.system
