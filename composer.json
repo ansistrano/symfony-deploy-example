@@ -79,7 +79,8 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
-        ]
+        ],
+        "deploy": "ansible-playbook -i 192.168.10.10, -u vagrant -e 'ansible_python_interpreter=python3' .ansistrano/deploy.yaml"
     },
     "conflict": {
         "symfony/symfony": "*"
