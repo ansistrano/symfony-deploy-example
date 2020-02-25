@@ -12,7 +12,7 @@ keys:
 sites:
     -
         map: homestead.test
-        to: /var/www/homestead/current
+        to: /var/www/homestead/current/public
 databases:
     - homestead
 features:
