@@ -13,5 +13,6 @@
     ansistrano_git_ssh_opts: "-o StrictHostKeyChecking=no"
     ansistrano_git_depth: 1
     ansistrano_git_identity_key_path: "./../id_rsa"
+    ansistrano_allow_anonymous_stats: no
   roles:
     - { role: ansistrano.deploy }
