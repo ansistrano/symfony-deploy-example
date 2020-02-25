@@ -123,6 +123,9 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "laravel/homestead": {
+        "version": "v10.3.1"
+    },
     "league/uri-parser": {
         "version": "1.4.1"
     },

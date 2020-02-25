@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6f0f58e6c1da7f449d1f9c59cc0ef2d",
+    "content-hash": "54a50398fd2affc4c6c36c74938b7169",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -6140,6 +6140,51 @@
             ],
             "description": "A tool to automatically fix PHP code style",
             "time": "2019-11-28T17:34:53+00:00"
+        },
+        {
+            "name": "laravel/homestead",
+            "version": "v10.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/homestead.git",
+                "reference": "9aa511fda4dc4e67bd771f21cf0cd56f7b90a279"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/homestead/zipball/9aa511fda4dc4e67bd771f21cf0cd56f7b90a279",
+                "reference": "9aa511fda4dc4e67bd771f21cf0cd56f7b90a279",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "symfony/console": "~3.0||~4.0||~5.0",
+                "symfony/process": "~3.0||~4.0||~5.0",
+                "symfony/yaml": "~3.0||~4.0||~5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
+            },
+            "bin": [
+                "bin/homestead"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Homestead\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "A virtual machine for web artisans.",
+            "time": "2020-02-13T16:06:36+00:00"
         },
         {
             "name": "nikic/php-parser",

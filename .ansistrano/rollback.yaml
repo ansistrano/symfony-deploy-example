@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    ansistrano_deploy_from: "{{ playbook_dir }}/../"
+    ansistrano_deploy_to: "/var/www/bioinnove.com"
+    ansistrano_after_update_code_tasks_file: "{{ playbook_dir }}/after-update-code.yaml"
+    ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/after-symlink.yaml"
+    ansistrano_keep_releases: 3
+    ansistrano_deploy_via: "git"
+    ansistrano_git_repo: https://github.com/ansistrano/symfony-deploy-example.git
+    ansistrano_git_branch: master
+    ansistrano_git_ssh_opts: "-o StrictHostKeyChecking=no"
+    ansistrano_git_depth: 1
+    ansistrano_git_identity_key_path: "~/.ssh/id_rsa"
+  roles:
+    - { role: ansistrano.rollback }

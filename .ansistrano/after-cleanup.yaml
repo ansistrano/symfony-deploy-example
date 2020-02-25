@@ -1,0 +1,29 @@
+# This is an example "after-cleanup" hook file.
+- name: Rollbar deployment tracking
+  rollbar_deployment:
+    environment: production
+    revision: "{{ ansistrano_git_result_update_ssh.after }}"
+    token: "<your rollbar token>"
+  run_once: true
+  ignore_errors: yes
+  delegate_to: 127.0.0.1
+  become: false
+- name: Upload register.onegenlab.com's JS sourcemaps to Rollbar
+  uri:
+    url: https://api.rollbar.com/api/1/sourcemap/download
+    method: POST
+    body_format: form-urlencoded
+    body:
+      access_token: "<your client access token>"
+      version: "{{ ansistrano_git_result.after }}"
+      minified_url: "{{ item }}"
+  with_items:
+    - https://register.onegenlab.com/build/app.js
+    - https://register.onegenlab.com/build/login.js
+    - https://register.onegenlab.com/build/admin.js
+    - https://register.onegenlab.com/build/search.js
+  run_once: true
+  ignore_errors: yes
+  delegate_to: 127.0.0.1
+  become: false
+

@@ -1,0 +1,23 @@
+ip: 192.168.10.10
+memory: 2048
+cpus: 2
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+#folders:
+#    -
+#        map: /Users/christian/workspace/php/rigorsquad/ansistrano/symfony-deploy-example
+#        to: /home/vagrant/code
+sites:
+    -
+        map: homestead.test
+        to: /var/www/homestead/current
+databases:
+    - homestead
+features:
+    - mariadb: false
+    - ohmyzsh: false
+    - webdriver: false
+name: symfony-demo
+hostname: symfony-demo

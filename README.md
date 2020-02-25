@@ -1,60 +1,32 @@
-Symfony Demo Application
-========================
+# Ansistrano Demo: Symfony Demo Deploy
 
-The "Symfony Demo Application" is a reference application created to show how
-to develop applications following the [Symfony Best Practices][1].
+This is an example repository intended to show the usage of Ansistrano to deploy a Symfony 5 application in a [Homestead][1]
+Virtual Machine
 
-Requirements
-------------
+## DISCLAIMER
 
-  * PHP 7.2.9 or higher;
-  * PDO-SQLite PHP extension enabled;
-  * and the [usual Symfony application requirements][2].
+The only purpose of this repository is to show the usage of Ansistrano. This means that some of the things done here are
+made in order to make it easy Ansistrano to work and have a quick demo for readers to have a clear idea of the workflow.
+But they cannot be considered in any case a best practice or the way to go when deploying applications in a real-world
+scenario.
 
-Installation
-------------
+## How to make it run
 
-[Download Symfony][4] to install the `symfony` binary on your computer and run
-this command:
+### Install all dependencies
 
-```bash
-$ symfony new --demo my_project
-```
+    composer install
 
-Alternatively, you can use Composer:
+### Spin up the Homestead machine
 
-```bash
-$ composer create-project symfony/symfony-demo my_project
-```
+    vagrant up
 
-Usage
------
+### Deploy code
 
-There's no need to configure anything to run the application. If you have
-[installed Symfony][4], run this command and access the application in your
-browser at the given URL (<https://localhost:8000> by default):
+    composer deploy
 
-```bash
-$ cd my_project/
-$ symfony serve
-```
+### Check on the browser
 
-If you don't have the Symfony binary installed, run `php -S localhost:8000 -t public/`
-to use the built-in PHP web server or [configure a web server][3] like Nginx or
-Apache to run the application.
+    open https://homestead.test
 
-Tests
------
 
-Execute this command to run tests:
-
-```bash
-$ cd my_project/
-$ ./bin/phpunit
-```
-
-[1]: https://symfony.com/doc/current/best_practices.html
-[2]: https://symfony.com/doc/current/reference/requirements.html
-[3]: https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
-[4]: https://symfony.com/download
-[5]: https://github.com/symfony/webpack-encore
+[1]: https://laravel.com/docs/6.x/homestead

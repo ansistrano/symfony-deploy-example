@@ -1,0 +1,43 @@
+---
+- name: Generate .env file
+  copy:
+    remote_src: yes
+    src: "{{ ansistrano_release_path.stdout }}/.env.prod"
+    dest: "{{ ansistrano_release_path.stdout }}/.env"
+- name: Composer
+  composer:
+    working_dir: "{{ ansistrano_release_path.stdout }}/"
+- name: Dump .env file
+  shell: composer dump-env prod
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}/"
+- name: Clear Symfony's Cache
+  shell: php bin/console cache:clear
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}/"
+- name: Run migrations
+  shell: php bin/console doctrine:migrations:migrate --no-interaction --all-or-nothing
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}/"
+  run_once: true
+- name: Run fixtures
+  shell: php bin/console doctrine:fixtures:load --no-interaction --purge-with-truncate
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}/"
+  run_once: true
+- name: YARN install
+  yarn:
+    path: "{{ ansistrano_release_path.stdout }}/"
+- name: Encore build
+  shell: yarn build
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}/"
+- name: Remove unneeded files and folders
+  file:
+    path: "{{ ansistrano_release_path.stdout }}/{{ item }}"
+    state: absent
+  with_items:
+    - .env
+    - .env.prod
+    - .env.test
+    - node_modules
