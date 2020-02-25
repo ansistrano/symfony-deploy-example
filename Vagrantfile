@@ -43,8 +43,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.vm.provision "shell", path: customizationScriptPath, privileged: false, keep_color: true
     end
 
-    config.vm.provision "file", source: "./id_rsa", destination: ".ssh/deploy_key.id_rsa"
-
     if Vagrant.has_plugin?('vagrant-hostsupdater')
         config.hostsupdater.aliases = settings['sites'].map { |site| site['map'] }
     elsif Vagrant.has_plugin?('vagrant-hostmanager')
