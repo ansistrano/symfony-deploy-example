@@ -12,6 +12,8 @@ scenario.
 
 ## How to make it run
 
+Clone this repository into your Github account and then clone it from there.
+
 ### Install all dependencies
 
     composer install
@@ -20,13 +22,26 @@ scenario.
 
     vagrant up
 
+### Generate your own deploy key
+
+Follow the instructions here
+
+https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys
+
+Overwriting the files
+
+`id_rsa.pub`
+`id_rsa`
+
+With the generated SSH keys.
+
 ### Deploy code
 
     composer deploy
 
 ### Check on the browser
 
-    open https://homestead.test
+    open https://homestead.test:44300/
 
 
 [1]: https://laravel.com/docs/6.x/homestead
